@@ -26,15 +26,8 @@ public class SwaggerConfig {
     public GroupedOpenApi publicApi() {
         return GroupedOpenApi.builder()
                 .group("public")
+                .packagesToExclude("br.gov.mds.siscn.entity") // Exclude entity packages
                 .pathsToMatch("/**")
-                .build();
-    }
-
-    @Bean
-    public GroupedOpenApi entityApi() {
-        return GroupedOpenApi.builder()
-                .group("entities")
-                .packagesToScan("br.gov.mds.siscn.entity")
                 .build();
     }
 }
