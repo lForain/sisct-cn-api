@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 @Data
 @Entity
-@Table(name = "CADASTRO_NACIONAL")
+@Table(name = "TB_CADASTRO_NACIONAL")
 public class CadastroNacional {
 
     @Id
