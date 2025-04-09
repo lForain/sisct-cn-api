@@ -5,119 +5,141 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table(name = "CADASTRO_NACIONAL")
+@Table(name = "TB_CADASTRO_NACIONAL")
 public class CadastroNacional {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID_CADASTRO_NACIONAL", nullable = false)
+    @Column(name = "PK_CADASTRO_NACIONAL", nullable = false)
     private Integer id;
 
-    @Column(name = "CO_CNPJ", length = 14)
+    @Column(name = "NU_CNPJ", nullable = false, length = 14)
     private String cnpj;
 
-    @Column(name = "CO_TIPO_ENTIDADE", nullable = false)
-    private Integer tipoEntidade;
+    @Column(name = "NU_FILIAIS", nullable = false)
+    private Integer filiais;
 
-    @Column(name = "NR_FILIAIS", nullable = false)
-    private Integer numeroFiliais;
-
-    @Column(name = "NO_NOME_FANTASIA", nullable = false, length = 200)
+    @Column(name = "NO_FANTASIA", nullable = false, length = 200)
     private String nomeFantasia;
 
-    @Column(name = "NO_RAZAO_SOCIAL", length = 200)
+    @Column(name = "NO_RAZAO_SOCIAL", nullable = false, length = 200)
     private String razaoSocial;
 
-    @Column(name = "CO_CNAE_PRINCIPAL", length = 50)
+    @Column(name = "CO_CNAE_PRINCIPAL", nullable = false, length = 20)
     private String cnaePrincipal;
 
-    @Column(name = "CO_CNAE_SECUNDARIO", length = 50)
+    @Column(name = "CO_CNAE_SECUNDARIO", nullable = false, length = 20)
     private String cnaeSecundario;
 
     @Column(name = "VL_RECEITA_BRUTA", nullable = false, precision = 18, scale = 2)
     private BigDecimal receitaBruta;
 
-    @Column(name = "TP_MODALIDADE_FINANCIAMENTO", nullable = false)
-    private Integer modalidadeFinanciamento;
+    @Column(name = "TP_FINANCIAMENTO_UNIAO", nullable = false, length = 1)
+    private String financiamentoUniao;
 
-    @Column(name = "CO_MODALIDADE")
-    private Integer modalidade;
+    @Column(name = "TP_FINANCIAMENTO_ESTADO", nullable = false, length = 1)
+    private String financiamentoEstado;
 
-    @Column(name = "CO_MODALIDADE_OUTROS")
-    private Integer modalidadeOutros;
+    @Column(name = "TP_FINANCIAMENTO_MUNICIPIO", nullable = false, length = 1)
+    private String financiamentoMunicipio;
 
-    @Column(name = "TP_FINANCIAMENTO_ESTADO", nullable = false)
-    private Integer financiamentoEstado;
+    @Column(name = "NU_MESES_PROJETO")
+    private Integer mesesProjeto;
 
-    @Column(name = "CO_FINANCIAMENTO_ESTADO", length = 50)
-    private String financiamentoEstadoCodigo;
+    @Column(name = "TP_POSSUI_CEBAS", nullable = false, length = 1)
+    private String possuiCebas;
 
-    @Column(name = "TP_FINANCIAMENTO_MUNICIPIO")
-    private Integer financiamentoMunicipio;
+    @Column(name = "DT_CEBAS_INICIO", nullable = false)
+    private LocalDate cebasInicio;
 
-    @Column(name = "CO_FINANCIAMENTO_MUNICIPIO")
-    private Integer financiamentoMunicipioCodigo;
+    @Column(name = "DT_CEBAS_FINAL", nullable = false)
+    private LocalDate cebasFinal;
 
-    @Column(name = "TP_DOACOES_OUTRAS")
-    private Integer doacoesOutras;
+    @Column(name = "TP_REQUERIMENTO_CEBAS", nullable = false, length = 1)
+    private String requerimentoCebas;
 
-    @Column(name = "ED_DOACOES_OUTRAS_DETALHES", length = 100)
-    private String doacoesOutrasDetalhes;
+    @Column(name = "NU_CEBAS_ANO_PROTOCOLO")
+    private Integer cebasAnoProtocolo;
 
-    @Column(name = "VL_DOACOES_OUTRAS_MEDIA", precision = 18, scale = 2)
-    private BigDecimal doacoesOutrasMedia;
+    @Column(name = "NU_CEBAS_PROTOCOLO")
+    private Integer cebasProtocolo;
 
-    @Column(name = "TP_DOACOES_OUTRAS_RECEITAS")
-    private Integer doacoesOutrasReceitas;
-
-    @Column(name = "VL_DOACOES_OUTRAS_RECEITAS_MEDIA")
-    private Integer doacoesOutrasReceitasMedia;
-
-    @Column(name = "ED_DOACOES_OUTRAS_RECEITAS_OUTRAS", length = 50)
-    private String doacoesOutrasReceitasOutras;
-
-    @Column(name = "VL_DOACOES_OUTRAS_MEDIA_2", precision = 18, scale = 2)
-    private BigDecimal doacoesOutrasMedia2;
-
-    @Column(name = "DS_URL_LICENCA_SANITARIA", length = 400)
-    private String urlLicencaSanitaria;
-
-    @Column(name = "DT_VALIDADE_LICENCA_SANITARIA")
-    private LocalDate validadeLicencaSanitaria;
-
-    @Column(name = "NR_PRAZO_PROJETO", nullable = false)
-    private Integer prazoProjeto;
-
-    @Column(name = "DS_URL_PROJETO_TERAPEUTICO", length = 400)
-    private String urlProjetoTerapeutico;
-
-    @Column(name = "TP_POSSUI_CEBAS", nullable = false)
-    private Integer possuiCebas;
-
-    @Column(name = "DT_INICIO_VALIDADE_CEBAS")
-    private LocalDate inicioValidadeCebas;
-
-    @Column(name = "DT_FIM_VALIDADE_CEBAS")
-    private LocalDate fimValidadeCebas;
-
-    @Column(name = "DS_URL_DOCUMENTO_CEBAS", length = 400)
-    private String urlDocumentoCebas;
-
-    @Column(name = "TP_CEBAS_DEPAD")
-    private Integer cebasDepad;
-
-    @Column(name = "NU_ANO_PROTOCOLO_CEBAS")
-    private Integer anoProtocoloCebas;
-
-    @Column(name = "NU_PROTOCOLO_CEBAS")
-    private Integer protocoloCebas;
-
-    @Column(name = "TP_CUMPRE_CONAD")
-    private Integer cumpreConad;
+    @Column(name = "TP_CUMPRE_DISPOSITIVOS", nullable = false, length = 1)
+    private String cumpreDispositivos;
 
     @Column(name = "NU_TOTAL_VAGAS")
     private Integer totalVagas;
+
+    @Column(name = "TP_POSSUI_INS_CONS_MUNICIPAL", nullable = false, length = 1)
+    private String possuiInscricaoConselhoMunicipal;
+
+    @Column(name = "TP_CONSELHO_INSCRITO", nullable = false, length = 1)
+    private String conselhoInscrito;
+
+    @Column(name = "TP_POSSUI_INS_CONS_ESTADUAL", nullable = false, length = 1)
+    private String possuiInscricaoConselhoEstadual;
+
+    @Column(name = "NO_CONSELHO_ESTADUAL", nullable = false, length = 200)
+    private String conselhoEstadual;
+
+    @Column(name = "TP_POSSUI_RECON_PUBLICA", nullable = false, length = 1)
+    private String possuiReconhecimentoPublico;
+
+    @Column(name = "TP_POSSUI_RECON_PUBLICA_QUAL", length = 1)
+    private String possuiReconhecimentoPublicoQual;
+
+    @Column(name = "TP_PERIODICIDADE_CAPACITACAO", nullable = false, length = 1)
+    private String periodicidadeCapacitacao;
+
+    @Column(name = "TP_ACOLHIMENTO_PROVISORIO", nullable = false, length = 1)
+    private String acolhimentoProvisorio;
+
+    @Column(name = "TP_COMUN_TERAPEUTICA", nullable = false, length = 1)
+    private String comunidadeTerapeutica;
+
+    @Column(name = "TP_CAPACIDADE", nullable = false, length = 1)
+    private String capacidade;
+
+    @Column(name = "TP_ACESSO_PUBLICO_ALVO", nullable = false, length = 1)
+    private String acessoPublicoAlvo;
+
+    @Column(name = "TP_ARTICULACAO", nullable = false, length = 1)
+    private String articulacao;
+
+    @Column(name = "DS_ARTICULACAO", nullable = false, length = 200)
+    private String descricaoArticulacao;
+
+    @Column(name = "TP_POSSUI_QUADRO_TECNICO", nullable = false, length = 1)
+    private String possuiQuadroTecnico;
+
+    @Column(name = "TP_GRATUITO", nullable = false, length = 1)
+    private String gratuito;
+
+    @Column(name = "DS_CUSTEIO", nullable = false, length = 200)
+    private String descricaoCusteio;
+
+    @Column(name = "TP_PERIODICIDADE_ATIVIDADES", nullable = false, length = 1)
+    private String periodicidadeAtividades;
+
+    @Column(name = "DS_PERIODICIDADE_ATIVIDADES", nullable = false, length = 200)
+    private String descricaoPeriodicidadeAtividades;
+
+    @Column(name = "TP_CONTROLE_PUBLICO_ALVO", nullable = false, length = 1)
+    private String controlePublicoAlvo;
+
+    @Column(name = "TP_POSSUI_SICAF", nullable = false, length = 1)
+    private String possuiSicaf;
+
+    @Column(name = "NU_STATUS", nullable = false)
+    private Integer status;
+
+    @Column(name = "ST_CADASTRO_NACIONAL_ATIVO", nullable = false, length = 1)
+    private String cadastroNacionalAtivo;
+
+    @Column(name = "DT_ATUALIZACAO", nullable = false)
+    private LocalDateTime dataAtualizacao;
 }
