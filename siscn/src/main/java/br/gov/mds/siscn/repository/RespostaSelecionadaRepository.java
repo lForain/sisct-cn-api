@@ -34,19 +34,19 @@ public interface RespostaSelecionadaRepository extends JpaRepository<RespostaSel
     /**
      * Finds all selected responses by response ID
      * 
-     * @param resposta ID of the response
+     * @param respostaId ID of the response
      * @return List of selected responses
      */
     @RestResource(path = "por-resposta", rel = "por-resposta")
-    List<RespostaSelecionada> findByResposta(Integer resposta);
+    List<RespostaSelecionada> findByRespostaId(Integer respostaId);
     
     /**
      * Finds a specific selected response by cadastro nacional ID and response ID
      * 
      * @param cadastroNacionalId ID of the cadastro nacional
-     * @param resposta ID of the response
+     * @param respostaId ID of the response
      * @return The selected response if it exists
      */
     @RestResource(path = "por-cadastro-resposta", rel = "por-cadastro-resposta")
-    RespostaSelecionada findByCadastroNacionalIdAndResposta(Integer cadastroNacionalId, Integer resposta);
+    RespostaSelecionada findByCadastroNacionalIdAndRespostaId(Integer cadastroNacionalId, Integer respostaId);
 }

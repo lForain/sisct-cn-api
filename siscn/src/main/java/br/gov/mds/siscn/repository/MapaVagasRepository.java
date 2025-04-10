@@ -34,7 +34,7 @@ public interface MapaVagasRepository extends JpaRepository<MapaVagas, Integer> {
     /**
      * Finds all vacancy maps by financing type
      * 
-     * @param tipoFinanciamento ID of the financing type
+     * @param tipoFinanciamentoId ID of the financing type
      * @return List of vacancy maps
      */
     @RestResource(path = "por-financiamento", rel = "por-financiamento")

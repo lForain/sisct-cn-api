@@ -34,9 +34,9 @@ public interface AtendimentoRepository extends JpaRepository<Atendimento, Intege
     /**
      * Finds all attendances by type
      * 
-     * @param tipoAtendimento Type of attendance
+     * @param tipoAtendimentoId Type of attendance ID
      * @return List of attendances
      */
     @RestResource(path = "por-tipo", rel = "por-tipo")
-    List<Atendimento> findByTipoAtendimento(Integer tipoAtendimento);
+    List<Atendimento> findByTipoAtendimentoId(Integer tipoAtendimentoId);
 }

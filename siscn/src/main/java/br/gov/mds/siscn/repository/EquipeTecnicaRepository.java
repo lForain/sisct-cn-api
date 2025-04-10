@@ -34,18 +34,18 @@ public interface EquipeTecnicaRepository extends JpaRepository<EquipeTecnica, In
     /**
      * Finds all technical team members by profession
      * 
-     * @param profissao ID of the profession
+     * @param profissaoId ID of the profession
      * @return List of technical team members
      */
     @RestResource(path = "por-profissao", rel = "por-profissao")
-    List<EquipeTecnica> findByProfissao(Integer profissao);
+    List<EquipeTecnica> findByProfissaoId(Integer profissaoId);
     
     /**
      * Finds all technical team members by employment type
      * 
-     * @param vinculo ID of the employment type
+     * @param vinculoId ID of the employment type
      * @return List of technical team members
      */
     @RestResource(path = "por-vinculo", rel = "por-vinculo")
-    List<EquipeTecnica> findByVinculo(Integer vinculo);
+    List<EquipeTecnica> findByVinculoId(Integer vinculoId);
 }

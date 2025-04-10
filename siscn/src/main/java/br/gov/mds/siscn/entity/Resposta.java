@@ -4,6 +4,7 @@ import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -49,6 +50,7 @@ public class Resposta {
     private Integer perguntaId;
     
     @ManyToOne
-    @JoinColumn(name = "PK_PERGUNTAS", insertable = false, updatable = false)
+    @JoinColumn(name = "PK_PERGUNTAS", insertable = false, updatable = false, 
+                foreignKey = @ForeignKey(name = "RefTB_PERGUNTA251"))
     private Pergunta pergunta;
 }

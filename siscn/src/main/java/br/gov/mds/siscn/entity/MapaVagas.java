@@ -1,6 +1,7 @@
 package br.gov.mds.siscn.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -27,10 +28,21 @@ public class MapaVagas {
     @Column(name = "DT_ATUALIZACAO", nullable = false)
     private LocalDateTime dataAtualizacao;
 
+    @NotNull
     @Column(name = "PK_TIPO_FINANCIAMENTO", nullable = false)
-    private Integer tipoFinanciamento;
+    private Integer tipoFinanciamentoId;
+
+    @ManyToOne
+    @JoinColumn(name = "PK_TIPO_FINANCIAMENTO", insertable = false, updatable = false, 
+                foreignKey = @ForeignKey(name = "RefTB_TIPO_FINANCIAMENTO141"))
+    private TipoFinanciamento tipoFinanciamento;
+
+    @NotNull
+    @Column(name = "PK_CADASTRO_NACIONAL", nullable = false)
+    private Integer cadastroNacionalId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "PK_CADASTRO_NACIONAL", nullable = false)
+    @JoinColumn(name = "PK_CADASTRO_NACIONAL", insertable = false, updatable = false, 
+                foreignKey = @ForeignKey(name = "RefTB_CADASTRO_NACIONAL151"))
     private CadastroNacional cadastroNacional;
 }

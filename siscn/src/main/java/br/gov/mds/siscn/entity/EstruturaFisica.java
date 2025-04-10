@@ -2,6 +2,7 @@ package br.gov.mds.siscn.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.ForeignKey;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.MapsId;
@@ -25,7 +26,8 @@ public class EstruturaFisica {
     
     @OneToOne
     @MapsId
-    @JoinColumn(name = "PK_CADASTRO_NACIONAL")
+    @JoinColumn(name = "PK_CADASTRO_NACIONAL", 
+                foreignKey = @ForeignKey(name = "RefTB_CADASTRO_NACIONAL191"))
     private CadastroNacional cadastroNacional;
     
     @NotNull

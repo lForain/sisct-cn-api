@@ -1,6 +1,7 @@
 package br.gov.mds.siscn.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -24,10 +25,21 @@ public class RespostaSelecionada {
     @Column(name = "DT_ATUALIZACAO", nullable = false)
     private LocalDateTime dataAtualizacao;
 
-    @Column(name = "PK_RESPOSTA", nullable = false)
-    private Integer resposta;
+    @NotNull
+    @Column(name = "PK_CADASTRO_NACIONAL", nullable = false)
+    private Integer cadastroNacionalId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "PK_CADASTRO_NACIONAL", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "PK_CADASTRO_NACIONAL", insertable = false, updatable = false, 
+                foreignKey = @ForeignKey(name = "RefTB_CADASTRO_NACIONAL231"))
     private CadastroNacional cadastroNacional;
+
+    @NotNull
+    @Column(name = "PK_RESPOSTA", nullable = false)
+    private Integer respostaId;
+
+    @ManyToOne
+    @JoinColumn(name = "PK_RESPOSTA", insertable = false, updatable = false, 
+                foreignKey = @ForeignKey(name = "RefTB_RESPOSTA221"))
+    private Resposta resposta;
 }

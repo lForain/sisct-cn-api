@@ -4,6 +4,7 @@ import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -86,6 +87,7 @@ public class RepresentanteLegal {
     private Integer cadastroNacionalId;
     
     @ManyToOne
-    @JoinColumn(name = "PK_CADASTRO_NACIONAL", insertable = false, updatable = false)
+    @JoinColumn(name = "PK_CADASTRO_NACIONAL", insertable = false, updatable = false, 
+                foreignKey = @ForeignKey(name = "RefTB_CADASTRO_NACIONAL51"))
     private CadastroNacional cadastroNacional;
 }

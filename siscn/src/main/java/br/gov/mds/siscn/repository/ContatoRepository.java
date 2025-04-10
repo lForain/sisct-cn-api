@@ -34,9 +34,9 @@ public interface ContatoRepository extends JpaRepository<Contato, Integer> {
     /**
      * Finds all contacts by type
      * 
-     * @param tipoContato Type of contact
+     * @param tipoContatoId Type of contact ID
      * @return List of contacts
      */
     @RestResource(path = "por-tipo", rel = "por-tipo")
-    List<Contato> findByTipoContato(Integer tipoContato);
+    List<Contato> findByTipoContatoId(Integer tipoContatoId);
 }
