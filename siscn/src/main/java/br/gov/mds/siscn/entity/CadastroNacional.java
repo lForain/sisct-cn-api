@@ -1,10 +1,16 @@
 package br.gov.mds.siscn.entity;
 
-import jakarta.persistence.*;
-import lombok.Data;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
+
+import br.gov.mds.siscn.service.FieldMetadata;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Data;
 
 @Data
 @Entity
@@ -13,21 +19,24 @@ public class CadastroNacional {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID_CADASTRO_NACIONAL", nullable = false)
+    @FieldMetadata(label = "Matrícula", order = 1, required = true)
+    @Column(name = "ID_CADASTRO_NACIONAL")
     private Integer id;
 
-    @Column(name = "CO_CNPJ", length = 14)
+    @Column(name = "CO_CNPJ", length = 14, nullable = false)
     private String cnpj;
 
-    @Column(name = "CO_TIPO_ENTIDADE", nullable = false)
+    @Column(name = "CO_TIPO_ENTIDADE")
     private Integer tipoEntidade;
 
-    @Column(name = "NR_FILIAIS", nullable = false)
+    @FieldMetadata(label = "Número de Filiais", order = 4, required = false)
+    @Column(name = "NR_FILIAIS")
     private Integer numeroFiliais;
 
-    @Column(name = "NO_NOME_FANTASIA", nullable = false, length = 200)
+    @Column(name = "NO_NOME_FANTASIA", length = 200)
     private String nomeFantasia;
 
+    @FieldMetadata(label = "Razão Social ", order = 1, required = false)
     @Column(name = "NO_RAZAO_SOCIAL", length = 200)
     private String razaoSocial;
 
@@ -37,10 +46,10 @@ public class CadastroNacional {
     @Column(name = "CO_CNAE_SECUNDARIO", length = 50)
     private String cnaeSecundario;
 
-    @Column(name = "VL_RECEITA_BRUTA", nullable = false, precision = 18, scale = 2)
+    @Column(name = "VL_RECEITA_BRUTA", precision = 18, scale = 2)
     private BigDecimal receitaBruta;
 
-    @Column(name = "TP_MODALIDADE_FINANCIAMENTO", nullable = false)
+    @Column(name = "TP_MODALIDADE_FINANCIAMENTO")
     private Integer modalidadeFinanciamento;
 
     @Column(name = "CO_MODALIDADE")
@@ -49,7 +58,7 @@ public class CadastroNacional {
     @Column(name = "CO_MODALIDADE_OUTROS")
     private Integer modalidadeOutros;
 
-    @Column(name = "TP_FINANCIAMENTO_ESTADO", nullable = false)
+    @Column(name = "TP_FINANCIAMENTO_ESTADO")
     private Integer financiamentoEstado;
 
     @Column(name = "CO_FINANCIAMENTO_ESTADO", length = 50)
@@ -88,13 +97,14 @@ public class CadastroNacional {
     @Column(name = "DT_VALIDADE_LICENCA_SANITARIA")
     private LocalDate validadeLicencaSanitaria;
 
-    @Column(name = "NR_PRAZO_PROJETO", nullable = false)
+    @FieldMetadata(label = "Prazo de permanência", order = 5, required = false)
+    @Column(name = "NR_PRAZO_PROJETO")
     private Integer prazoProjeto;
 
     @Column(name = "DS_URL_PROJETO_TERAPEUTICO", length = 400)
     private String urlProjetoTerapeutico;
 
-    @Column(name = "TP_POSSUI_CEBAS", nullable = false)
+    @Column(name = "TP_POSSUI_CEBAS")
     private Integer possuiCebas;
 
     @Column(name = "DT_INICIO_VALIDADE_CEBAS")
